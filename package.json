@@ -1,0 +1,12 @@
+{
+  "name": "startup-arena",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Actividad local de diseño de software: sorteo, tiempos, evaluación y Podium.",
+  "scripts": {
+    "test": "node tests/run.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

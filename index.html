@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorteo de desafíos - Startup Arena</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d28d9'/%3E%3Cpath d='M10 7h12v18H10z' fill='white'/%3E%3Cpath d='m19 10-6 7h4l-3 6 7-8h-4z' fill='%236d28d9'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--navy:#17203d;--purple:#6826d4;--muted:#59627a;--line:#dfe3ee}*{box-sizing:border-box}body{margin:0;background:#f3f5fa;color:var(--navy);font:17px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}button,input{font:inherit}button{cursor:pointer;min-height:52px;border-radius:12px;padding:12px 22px;font-weight:700;border:1px solid var(--line);background:white;color:var(--navy)}button:hover{border-color:var(--purple);background:#f6f1ff}button:disabled{cursor:not-allowed;opacity:.55}button:focus-visible,input:focus-visible{outline:3px solid #a67cff;outline-offset:4px}.primary{background:var(--purple);color:white;border-color:var(--purple)}.primary:hover{background:#5120aa;color:white}.topbar{background:var(--navy);color:white;padding:18px max(24px,calc((100% - 1180px)/2));display:flex;justify-content:space-between;gap:16px;align-items:center}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:#c6a6ff}.course{font-size:.88rem;color:#d9deee}main{max-width:1230px;padding:38px 24px 60px;margin:auto}.intro{display:flex;gap:24px;justify-content:space-between;align-items:center;margin-bottom:25px}h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-.035em;margin:8px 0 16px}.eyebrow{font-size:.82rem;font-weight:800;letter-spacing:.14em;color:var(--purple);text-transform:uppercase}.intro p{max-width:710px;margin:0;color:var(--muted)}.counter{flex:0 0 160px;text-align:center;border-left:1px solid #ccd2e2;padding:12px 0 12px 25px}.counter strong{display:block;font-size:3.7rem;line-height:1;color:var(--purple)}.counter span{font-size:.9rem;color:var(--muted)}.draw-panel{background:white;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 10px 32px #17203d06}.deck-info{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:.9rem;color:var(--muted);margin-bottom:22px}.deck-info b{color:var(--navy)}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;background:#8050da}.dot.problem{background:#3170bf}.dot.investor{background:#237b80}form{display:flex;gap:16px;align-items:end}label{font-weight:700;display:block;margin-bottom:8px}.field{flex:1}input{width:100%;padding:13px 16px;border:1px solid #a7afc3;border-radius:12px;background:#fcfcfe;color:var(--navy);min-height:54px}input::placeholder{color:#727a8e}.help{color:var(--muted);font-size:.85rem;margin:15px 0 0}.message{margin:14px 0 0;font-weight:600;color:#405173}.message:empty{display:none}.message.error{color:#a42636}.results-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:34px 0 18px}h2{font-size:1.4rem;margin:0}.results-head p{font-size:.9rem;color:var(--muted);margin:3px 0 0}.reset{font-size:.9rem;background:transparent}.empty{border:2px dashed #d3d9e8;border-radius:18px;padding:36px 24px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--navy);font-size:1.15rem;margin-bottom:7px}.group{background:white;border:1px solid var(--line);border-radius:20px;margin-bottom:25px;overflow:hidden}.group-head{display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--line)}.number{background:#eee6fc;color:var(--purple);border-radius:11px;padding:7px 12px;font-weight:800}.group h3{font-size:1.4rem;margin:0;overflow-wrap:anywhere}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:22px 24px 28px}.card{margin:0;min-width:0}.card figcaption{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-weight:750}.card small{font-size:.8rem;color:var(--muted);font-weight:500}.card img{display:block;width:100%;height:auto;max-height:530px;object-fit:contain;object-position:top}.card-name{margin:12px 0 0;font-size:.95rem;color:var(--muted);text-align:center}footer{border-top:1px solid var(--line);padding-top:20px;font-size:.85rem;color:var(--muted);margin-top:30px}dialog{max-width:480px;width:calc(100% - 32px);border:0;border-radius:20px;padding:28px;color:var(--navy);box-shadow:0 24px 100px #0004}dialog::backdrop{background:#111a38aa}dialog h2{font-size:1.5rem}dialog p{color:var(--muted)}.dialog-actions{display:flex;justify-content:end;gap:12px;flex-wrap:wrap}.danger{background:#a42636;color:white;border-color:#a42636}.danger:hover{background:#821b28;color:white}@media(max-width:650px){.topbar{padding:17px 20px}.course{display:none}main{padding:25px 16px 40px}.intro{gap:12px}.counter{flex-basis:96px;padding-left:12px}.counter strong{font-size:3rem}.counter span{font-size:.8rem}.draw-panel{padding:20px}form{display:block}form button{width:100%;margin-top:14px}.cards{grid-template-columns:1fr;padding:20px;gap:28px}.card img{max-height:580px}.results-head{align-items:start}.reset{padding:10px 12px}.group-head{padding:18px 20px}}@media(prefers-reduced-motion:no-preference){.group:first-child{animation:reveal .3s ease-out}@keyframes reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+.investor-extension{border-top:1px solid var(--line);padding:24px;background:#fffdf9}.change-button{background:#975008;color:white;border-color:#975008}.change-button:hover{background:#773e06;color:white;border-color:#773e06}.investment-icon{font-size:1.35rem}.change-received{display:inline-block;color:#784006;font-weight:750;margin-bottom:16px}.change-panel{background:#fff6e5;border:1px solid #e9c283;border-left:5px solid #b66a15;border-radius:12px;padding:20px 24px}.change-panel h4{font-size:1.2rem;color:#784006;margin:0 0 16px}.change-panel h5{font-size:1.15rem;margin:0 0 8px}.change-panel p{margin:8px 0}.change-question{font-weight:650}.investor-notification{padding:22px;background:#fff6e5;border:1px solid #e9c283;border-radius:12px;color:#784006;font-weight:750}.solution-upload{margin-top:22px}.solution-upload input{display:block;margin-top:10px;background:white;font-size:1rem}.solution-upload input::file-selector-button{border:0;background:#eee6fc;color:#5120aa;border-radius:7px;padding:9px 12px;margin-right:12px;font-weight:650;cursor:pointer}.solution-image{display:block;width:auto;max-width:100%;max-height:900px;height:auto;margin:18px auto 0;border:1px solid var(--line);border-radius:10px}.extension-feedback{color:#784006;font-weight:600;overflow-wrap:anywhere}.extension-feedback:empty{display:none}@media(prefers-reduced-motion:no-preference){.investor-notification{animation:notification-pulse .45s ease-in-out 2 alternate}.change-panel{animation:requirement-update .4s ease-out}@keyframes notification-pulse{to{background:#ffe6b7;transform:translateY(-3px)}}@keyframes requirement-update{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}@media(max-width:650px){.investor-extension{padding:20px}.change-button{width:100%}.change-panel{padding:17px}.solution-upload input{min-width:0;max-width:100%}}
+
+.reading-controls{display:flex;justify-content:flex-end;margin-bottom:18px}.reading-switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;margin:0;font-size:1rem}.reading-switch input{width:42px;height:24px;min-height:0;appearance:none;border-radius:20px;border:2px solid #737d94;background:#e1e5ee;padding:2px;cursor:pointer;margin:0}.reading-switch input::before{content:'';display:block;width:16px;height:16px;border-radius:50%;background:#49536b}.reading-switch input:checked{background:#6826d4;border-color:#6826d4}.reading-switch input:checked::before{background:white;transform:translateX(16px)}.card-transcript{margin-top:16px;background:white;color:#17203d;border:1px solid #b6bfd2;border-radius:10px;padding:20px;font-size:1.2rem;line-height:1.8;overflow-wrap:anywhere}.card-transcript[hidden]{display:none}.card-transcript h4{font-size:1.3rem;margin:0 0 12px;line-height:1.5}.card-transcript p{margin:0 0 14px}.card-transcript p:last-child{margin-bottom:0}.team-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0 24px 22px;gap:12px}.team-step{display:flex;align-items:flex-start;gap:9px;border-top:4px solid #d5dae5;padding-top:10px;font-size:.88rem;color:#59627a}.step-marker{display:inline-flex;align-items:center;justify-content:center;flex:0 0 25px;height:25px;border-radius:50%;border:1px solid #8992a6;font-weight:750}.step-status{display:block;font-size:.8rem;font-weight:400}.team-step.completed{border-color:#237b80;color:#165b5f}.completed .step-marker{background:#237b80;color:white;border-color:#237b80}.team-step.current{border-color:#975008;color:#784006;font-weight:700}.current .step-marker{background:#fff2d9;border:2px solid #975008}.team-step.pending{border-top-style:dashed}.delivery-button{display:block;margin-top:18px;min-height:44px;font-size:.9rem;padding:8px 16px}.delivery-button:disabled{opacity:1;color:#165b5f;border-color:#a4c7c9;background:#edf6f6}@media(max-width:650px){.team-progress{grid-template-columns:1fr;padding:0 20px 20px;gap:10px}.team-step{border-top:0;border-left:4px solid #d5dae5;padding:4px 0 4px 12px}.team-step.completed{border-left-color:#237b80}.team-step.current{border-left-color:#975008}.team-step.pending{border-left-style:dashed}.card-transcript{padding:16px}}
+
+[hidden]{display:none!important}.arena-tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:22px}.arena-tabs button{background:transparent;border-color:transparent;font-size:1rem}.arena-tabs button[aria-selected="true"]{background:#eee6fc;color:#5120aa;border-color:#c9b2ed}.tab-panel:focus{outline:none}.session-notice{border-left:4px solid #237b80;background:#eaf5f5;color:#165b5f;padding:12px 16px;border-radius:6px}.session-notice:empty{display:none}#draw-form{display:grid;grid-template-columns:minmax(200px,1.6fr) minmax(150px,1fr) minmax(155px,1fr) auto;gap:16px}.timing-field label{font-size:.9rem}.timing-hint{font-size:.85rem;color:var(--muted);margin:12px 0 0}.group-head{flex-wrap:wrap}.team-timer{margin-left:auto;display:flex;flex-direction:column;gap:3px;text-align:right;min-width:195px}.timer-value{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums;color:#5120aa;line-height:1.25}.timer-info{font-size:.85rem;color:var(--muted)}.timer-ended .timer-value{color:#784006;font-size:1.1rem}.legacy-timing{flex-basis:100%;display:flex;gap:12px;align-items:end;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)}.legacy-timing label{flex:1;font-size:.85rem;min-width:140px;margin:0}.legacy-timing input{margin-top:5px}.legacy-timing p{flex-basis:100%;font-size:.9rem;margin:0}.panel-heading{margin-bottom:26px}.panel-heading h1{font-size:2.25rem}.panel-heading p{color:var(--muted);max-width:780px}.teacher-guide{list-style:none;counter-reset:guide;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.teacher-guide li{counter-increment:guide;background:white;border:1px solid var(--line);border-radius:16px;padding:24px}.teacher-guide li::before{content:counter(guide,decimal-leading-zero);display:inline-block;color:#6826d4;background:#eee6fc;padding:4px 10px;border-radius:8px;font-weight:800;margin-bottom:14px}.teacher-guide h2{font-size:1.2rem}.teacher-guide p{margin:12px 0 0}.guide-note{border-left:4px solid #237b80;padding:18px 22px;background:#eaf5f5;border-radius:10px}.guide-note p{margin-bottom:0}.evaluation-group{border:1px solid var(--line);background:white;border-radius:18px;padding:24px;margin-bottom:24px}.evaluation-group h2{overflow-wrap:anywhere}.evaluation-cards{display:grid;grid-template-columns:repeat(3,minmax(0,160px));gap:18px;margin:20px 0}.evaluation-cards figure{margin:0;min-width:0}.evaluation-cards figcaption{font-size:.9rem;font-weight:750;margin-bottom:8px}.evaluation-cards img{width:100%;height:160px;object-fit:contain;object-position:top}.evaluation-cards .card-name{font-size:.85rem;margin-top:8px}.evaluation-cards .card-transcript{font-size:1rem;padding:12px}.evaluation-cards .card-transcript h4{font-size:1.1rem}.evaluation-evidence{background:#f7f8fc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:18px 0}.evaluation-evidence summary{cursor:pointer;font-weight:650}.evaluation-evidence img{max-height:600px}.evaluation-meter{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:18px 0}.evaluation-meter strong{font-size:.95rem}.evaluation-meter progress{flex:1;min-width:150px;height:16px;accent-color:#237b80}.evaluation-checklist{margin:0;padding:0;border:0}.evaluation-checklist legend{font-weight:750;margin-bottom:12px}.checklist-row{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-top:1px solid var(--line);font-weight:400;margin:0;cursor:pointer}.checklist-row input{width:22px;height:22px;min-height:22px;padding:0;flex:0 0 22px;accent-color:#6826d4;margin:3px 0 0}.evaluation-status{font-size:.9rem;color:#165b5f;margin:12px 0 0}.evaluation-status:empty{display:none}@media(max-width:1000px){#draw-form{grid-template-columns:1fr 1fr}#draw-form>.field:first-child{grid-column:1/-1}#draw-form>.primary{grid-column:1/-1}}@media(max-width:650px){#draw-form{display:flex;flex-direction:column;align-items:stretch}.arena-tabs{gap:4px}.arena-tabs button{padding:10px 12px;font-size:.9rem;flex:1}.team-timer{margin-left:0;flex-basis:100%;text-align:left}.teacher-guide{grid-template-columns:1fr}.evaluation-group{padding:18px}.evaluation-cards{gap:10px}.evaluation-cards img{height:115px}.evaluation-cards:has(.card-transcript:not([hidden])){grid-template-columns:1fr}.evaluation-cards:has(.card-transcript:not([hidden])) img{height:180px}}
+
+.checklist-choice{min-width:0;border:0;border-top:1px solid var(--line);margin:0;padding:16px 0}.checklist-choice legend{float:left;width:100%;font-weight:400;line-height:1.6;margin:0 0 10px;padding:0}.checklist-options{display:flex;clear:both;gap:12px}.checklist-option{display:inline-flex;align-items:center;gap:9px;border:1px solid #a7afc3;border-radius:9px;padding:9px 16px;min-height:44px;font-size:1rem;font-weight:600;margin:0;cursor:pointer}.checklist-option input{width:20px;height:20px;min-height:20px;flex:0 0 20px;padding:0;margin:0;accent-color:#6826d4}.checklist-option:has(input:checked){background:#eee6fc;border-color:#6826d4;color:#5120aa}.evaluation-export{border-top:1px solid var(--line);padding-top:24px;margin-top:28px}.evaluation-export p{color:var(--muted);font-size:.9rem}.evaluation-export .evaluation-status{color:#165b5f}@media(max-width:650px){.evaluation-export button{width:100%}}
+
+.student-activity{font-size:1.05rem;line-height:1.7}.activity-heading{margin-bottom:24px;max-width:850px}.activity-heading h1{font-size:clamp(2rem,3.6vw,2.8rem);line-height:1.2}.activity-heading>p{color:var(--muted)}.activity-intro{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line)}.activity-block{margin-top:42px}.activity-section-title{display:flex;gap:15px;align-items:center;margin-bottom:22px}.activity-section-title h2{font-size:1.65rem;line-height:1.3}.activity-index{flex-shrink:0;font-size:1rem;font-weight:800;background:#eee6fc;color:#6826d4;padding:10px 13px;border-radius:12px}.outcome-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}.outcome-grid article,.activity-decks article,.activity-deliverables article{background:white;border:1px solid var(--line);border-radius:16px;padding:24px}.student-activity h3{font-size:1.18rem;line-height:1.4;margin:0 0 12px}.student-activity h4{font-size:1.05rem;margin:0 0 9px}.student-activity p{margin:0 0 16px}.student-activity article p:last-child{margin-bottom:0}.activity-objective{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:38px;align-items:center}.student-activity figure{margin:0;min-width:0}.student-activity figure img{display:block;width:100%;height:auto;border-radius:16px}.activity-poster{max-width:410px;justify-self:end}.activity-note{border-left:4px solid #237b80;padding:16px 20px;background:#eaf5f5;border-radius:8px;color:#165b5f}.activity-dynamics{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}.activity-list{padding-left:22px}.activity-list li{margin-bottom:12px}.activity-example{background:#17203d;color:white;border-radius:16px;padding:26px;margin-top:24px}.activity-example>p{color:#dce2f1}.activity-example-options{display:grid;grid-template-columns:1fr 1fr;gap:24px}.activity-example-options>div{border-top:1px solid #4b5471;padding-top:16px}.activity-example-options p{color:#e1e7f6;margin-bottom:0}.activity-decks,.activity-deliverables{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}.deck-letter,.deliverable-number{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-bottom:12px;border-radius:9px;background:#eee6fc;color:#6826d4;font-weight:800}.activity-decks article:nth-child(2) .deck-letter{background:#e6effc;color:#225794}.activity-decks article:nth-child(3) .deck-letter{background:#eaf5f5;color:#165b5f}.activity-delivery-intro{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.activity-time{display:flex;flex-direction:column;color:var(--muted)}.activity-time strong{font-size:2.25rem;line-height:1.3;color:#6826d4}.activity-deliverables ul{padding-left:20px;margin-bottom:0}.activity-deliverables li{margin-bottom:10px}@media(max-width:850px){.activity-decks,.activity-deliverables{grid-template-columns:1fr}.activity-objective{gap:24px}.activity-dynamics{grid-template-columns:1fr}}@media(max-width:650px){.outcome-grid,.activity-objective,.activity-example-options,.activity-delivery-intro{grid-template-columns:1fr}.activity-poster{max-width:380px;justify-self:center}.activity-block{margin-top:30px}.activity-section-title h2{font-size:1.4rem}.activity-section-title .eyebrow{font-size:.75rem}.activity-example{padding:20px}.outcome-grid article,.activity-decks article,.activity-deliverables article{padding:20px}}
+
+.evaluation-actions{display:flex;gap:14px;flex-wrap:wrap}.podium-button{background:#17203d;border-color:#17203d;color:white;min-width:140px}.podium-button:hover{background:#2d3963;color:white;border-color:#2d3963}.podium-dialog{max-width:1020px;width:calc(100% - 32px);max-height:92vh;max-height:92dvh;overflow-y:auto;padding:26px}.podium-header{display:flex;align-items:center;justify-content:space-between;gap:16px}.podium-header h2{font-size:2rem;margin-top:4px}.podium-header button{flex-shrink:0}.podium-dialog #podium-description{font-size:.9rem;margin:12px 0 20px;max-width:780px}.podium-slide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);align-items:center;gap:26px;background:#f6f4fb;border:1px solid #ddd2ef;border-radius:18px;padding:18px}.podium-slide img{display:block;width:100%;height:auto;max-height:53vh;object-fit:contain;border-radius:12px}.podium-rank-code{display:inline-block;background:#6826d4;color:white;font-size:.95rem;font-weight:800;border-radius:9px;padding:6px 12px}.podium-winners h3{font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.2;margin:14px 0}.podium-dialog .podium-score{color:#5120aa;font-size:2.4rem;font-weight:800;line-height:1.2;margin:0 0 16px}.podium-dialog .podium-tie{font-size:.9rem;color:#784006;background:#fff2d9;padding:7px 12px;border-radius:8px;display:inline-block;margin:0 0 12px}.podium-teams{list-style:none;padding:0;margin:0;display:grid;gap:9px}.podium-teams li{background:white;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:1.2rem;font-weight:750;overflow-wrap:anywhere}.podium-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}.podium-positions{display:flex;gap:7px}.podium-positions button{min-height:44px;padding:8px 12px;font-size:.9rem}.podium-positions button[aria-pressed="true"]{background:#6826d4;color:white;border-color:#6826d4}.podium-dialog .podium-announcement{font-size:.9rem;text-align:center;margin:16px 0 0;color:var(--muted)}@media(prefers-reduced-motion:no-preference){.podium-slide:not([hidden]){animation:podium-reveal .25s ease-out}@keyframes podium-reveal{from{opacity:.3;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}}@media(max-width:650px){.podium-dialog{padding:18px}.podium-slide{grid-template-columns:1fr;gap:16px;padding:14px}.podium-slide img{max-height:31vh}.podium-winners{text-align:center}.podium-teams li{font-size:1.05rem}.podium-controls{flex-wrap:wrap;gap:8px}.podium-positions{order:-1;width:100%;justify-content:center}.podium-controls>button{flex:1;padding:10px 12px}.evaluation-actions{flex-direction:column}}
+
+.student-activity .activity-description{font-size:1.25rem;line-height:1.85;color:#17203d;background:#fff;padding:22px;text-align:left}.student-activity .activity-description h3{font-size:1.3rem;line-height:1.5;margin:0 0 14px}.student-activity .activity-description p{margin:0 0 16px}.student-activity .activity-description p:last-child{margin-bottom:0}.student-activity .activity-description ol{padding-left:1.5em;margin:0}.student-activity .activity-description li{margin-bottom:12px}.student-activity .activity-description li:last-child{margin-bottom:0}@media(max-width:650px){.student-activity .activity-description{padding:16px}}
+
+</style></head>
+<body>
+<header class="topbar"><div class="brand">STARTUP <span>ARENA</span></div><div class="course">Diseño detallado de Software · 6.º semestre</div></header>
+<main>
+<div class="reading-controls"><label class="reading-switch" for="reading-view"><input id="reading-view" type="checkbox" role="switch" aria-label="Vista de lectura"><span>Vista de lectura</span></label></div>
+<nav class="arena-tabs" role="tablist" aria-label="Secciones de Startup Arena">
+ <button id="tab-activity" role="tab" aria-controls="panel-activity" aria-selected="true" tabindex="0" type="button">La actividad</button>
+ <button id="tab-arena" role="tab" aria-controls="panel-arena" aria-selected="false" tabindex="-1" type="button">Sorteo y equipos</button>
+ <button id="tab-guide" role="tab" aria-controls="panel-guide" aria-selected="false" tabindex="-1" type="button">Guía del docente</button>
+ <button id="tab-evaluation" role="tab" aria-controls="panel-evaluation" aria-selected="false" tabindex="-1" type="button">Evaluación</button>
+</nav>
+<p id="session-notice" class="session-notice" role="status" aria-live="polite"></p>
+
+<section id="panel-activity" class="tab-panel student-activity" role="tabpanel" aria-labelledby="tab-activity" tabindex="0">
+ <div class="activity-heading"><div class="eyebrow">Diseño detallado de Software · 6.º semestre</div><h1>El desafío: diseñar una solución en equipo</h1><p>Conecten un contexto, un problema y un inversionista. Transformen esa combinación en una propuesta que puedan explicar, dibujar y defender.</p></div>
+ <figure class="activity-intro-figure"><img class="activity-intro" data-activity-image="INTRO.png" src="assets/activity/intro.png" width="1280" height="720" alt="Startup Arena: idea, diseña, propone e impacta. Un equipo combina un contexto, un problema y un inversionista para crear y presentar su solución." aria-describedby="activity-reading-intro">
+<figcaption id="activity-reading-intro" class="card-transcript activity-description" role="region" aria-label="Descripción de la imagen: Presentación de Startup Arena" hidden><h3>Descripción de la imagen: Presentación de Startup Arena</h3>
+<p>Cuatro estudiantes, vistos de espaldas, están frente a la entrada iluminada de una arena. A su alrededor aparecen los símbolos del contexto, el problema, el inversionista y la solución. El título central es «Startup Arena» y la invitación es: «Idea. Diseña. Propone. Impacta».</p>
+ <p>La imagen presenta cinco pasos para participar:</p>
+ <ol><li><strong>Forma tu equipo:</strong> colabora, combina talentos y multiplica ideas.</li><li><strong>Entiende el reto:</strong> analiza el contexto, identifica oportunidades y piensa diferente.</li><li><strong>Diseña tu solución:</strong> crea, esquematiza, dibuja y construye tu idea.</li><li><strong>Presenta tu pitch:</strong> comunica la idea, defiende la propuesta e inspira al inversionista.</li><li><strong>Impacta el futuro:</strong> las mejores ideas se convierten en grandes historias.</li></ol>
+</figcaption></figure>
+ <section class="activity-block" aria-labelledby="outcomes-title">
+  <div class="activity-section-title"><span class="activity-index" aria-hidden="true">01</span><div><div class="eyebrow">Lo que van a desarrollar</div><h2 id="outcomes-title">Competencias o Student Outcomes</h2></div></div>
+  <div class="outcome-grid">
+   <article><h3>Diseño de ingeniería</h3><p>Capacidad de aplicar el diseño de ingeniería para producir soluciones que satisfagan necesidades específicas teniendo en cuenta la salud pública, la seguridad y el bienestar, así como factores globales, culturales, sociales, ambientales y económicos.</p></article>
+   <article><h3>Comunicación efectiva</h3><p>Capacidad de comunicarse eficazmente con una variedad de públicos.</p></article>
+  </div>
+ </section>
+ <section class="activity-objective activity-block" aria-labelledby="activity-objective-title">
+  <div>
+   <div class="activity-section-title"><span class="activity-index" aria-hidden="true">02</span><div><div class="eyebrow">El propósito</div><h2 id="activity-objective-title">Objetivo de la actividad</h2></div></div>
+   <p>Aplicar conceptos de diseño de software mediante una dinámica colaborativa y creativa: analizar un problema, proponer una solución tecnológica y modelarla con <strong>notación no formal</strong>, teniendo en cuenta los intereses del inversionista asignado al equipo.</p>
+   <p>Comunicar la propuesta mediante representaciones gráficas y un pitch, fortaleciendo la creatividad, el pensamiento crítico, la comunicación efectiva y el trabajo colaborativo.</p>
+   <p class="activity-note">Su reto es hacer visible cómo funcionaría la solución: qué elementos la componen, cómo se relacionan y por qué responden al desafío.</p>
+  </div>
+  <figure class="activity-poster"><img data-activity-image="imagen_arena.png" src="assets/activity/arena.png" width="508" height="720" loading="lazy" alt="Afiche de Startup Arena: estudiantes trabajan en equipo con diagramas, robots y tarjetas. La actividad invita a diseñar una solución, sumar un inversionista y presentar un pitch." aria-describedby="activity-reading-arena">
+<figcaption id="activity-reading-arena" class="card-transcript activity-description" role="region" aria-label="Descripción de la imagen: La propuesta de Startup Arena" hidden><h3>Descripción de la imagen: La propuesta de Startup Arena</h3>
+<p>Un equipo de estudiantes trabaja alrededor de una mesa con esquemas, dibujos y dispositivos. La escena incluye robots, criaturas fantásticas y una ciudad futurista que representan las posibilidades de los desafíos.</p>
+ <p>El afiche invita a plantear una solución en equipo a un problema dentro de un contexto, con ayuda de un inversionista. La solución puede representarse con un esquema, un mapa conceptual o un dibujo que sustente la idea.</p>
+ <p>También destaca los retos aleatorios, el diseño de la solución, el apoyo del inversionista y un pitch claro y convincente para presentar la propuesta.</p>
+</figcaption></figure>
+ </section>
+ <section class="activity-block" aria-labelledby="activity-dynamics-title">
+  <div class="activity-section-title"><span class="activity-index" aria-hidden="true">03</span><div><div class="eyebrow">La dinámica</div><h2 id="activity-dynamics-title">Formación de equipos</h2></div></div>
+  <div class="activity-dynamics">
+   <figure><img data-activity-image="Explicación1.png" src="assets/activity/teams.png" width="598" height="399" loading="lazy" alt="Tres equipos reciben combinaciones diferentes de tres mazos: contextos, problemas e inversionistas. Cada equipo reúne sus tarjetas para imaginar una solución." aria-describedby="activity-reading-teams">
+<figcaption id="activity-reading-teams" class="card-transcript activity-description" role="region" aria-label="Descripción de la imagen: Tres tarjetas para cada equipo" hidden><h3>Descripción de la imagen: Tres tarjetas para cada equipo</h3>
+<p>En la parte superior se ven tres mazos: tarjetas azules con escenarios, tarjetas rojas con problemas y tarjetas verdes con inversionistas. Las flechas conectan los mazos con tres equipos de estudiantes reunidos alrededor de mesas.</p>
+ <p>Cada equipo recibe una combinación distinta de un contexto, un problema y un inversionista. Los estudiantes conversan y relacionan las tres tarjetas para construir su solución.</p>
+</figcaption></figure>
+   <div><p>Cada equipo recibirá tres tarjetas al azar:</p><ul class="activity-list"><li><strong>Un contexto:</strong> el entorno donde funcionará la solución.</li><li><strong>Un problema:</strong> el reto que deberán resolver.</li><li><strong>Un inversionista:</strong> sus intereses orientarán la propuesta.</li></ul><p>Analicen las tres tarjetas juntas y construyan una idea que las conecte. Durante la actividad recibirán un cambio de condiciones del inversionista y deberán ajustar su diseño.</p></div>
+  </div>
+  <div class="activity-example"><h3>Ejemplo: una combinación, distintas posibilidades</h3><p><strong>Contexto:</strong> Hospital · <strong>Problema:</strong> Dragones · <strong>Inversionista:</strong> OpenAI Ventures</p><div class="activity-example-options"><div><h4>Evacuación inteligente</h4><p>Un sistema inteligente de evacuación hospitalaria ante dragones, apoyado en IA para monitorear riesgos y coordinar la respuesta.</p></div><div><h4>Negociación con IA</h4><p>En lugar de atacar al dragón, un robot equipado con IA analiza su comportamiento, traduce sus rugidos y negocia con él mediante una plataforma de negociación para evitar enfrentamientos.</p></div></div></div>
+  <div class="activity-decks">
+   <article><span class="deck-letter" aria-hidden="true">A</span><h3>Contextos</h3><p>Representan el entorno o escenario donde funcionará la solución. Definen los usuarios, las necesidades y las situaciones que deberá enfrentar.</p><p><strong>Ejemplos:</strong> hospital, universidad, nave espacial, supermercado o parque temático.</p></article>
+   <article><span class="deck-letter" aria-hidden="true">B</span><h3>Problemas</h3><p>Son el reto principal que la solución debe resolver dentro del contexto asignado. Pueden ser situaciones realistas, absurdas o creativas que invitan al análisis y la innovación.</p><p><strong>Ejemplos:</strong> zombies, dragones, mascotas rebeldes, crisis energética o fantasmas.</p></article>
+   <article><span class="deck-letter" aria-hidden="true">C</span><h3>Inversionistas</h3><p>Representan empresas o fondos que decidirán en qué proyecto invertir dinero ficticio. Sus intereses y prioridades son diferentes: adapten la propuesta para conseguir su apoyo.</p><p><strong>Ejemplos:</strong> empresas enfocadas en inteligencia artificial, videojuegos, blockchain o sostenibilidad.</p></article>
+  </div>
+ </section>
+ <section class="activity-block" aria-labelledby="activity-deliverables-title">
+  <div class="activity-section-title"><span class="activity-index" aria-hidden="true">04</span><div><div class="eyebrow">Lo que deben entregar</div><h2 id="activity-deliverables-title">Del diseño a la presentación</h2></div></div>
+  <div class="activity-delivery-intro"><div><p class="activity-time"><strong>30 minutos</strong> para preparar la propuesta</p><p>Una vez conformados los grupos, elaboren el pitch y un diseño <strong>a mano</strong> que modele su solución. Distribuyan el trabajo y asegúrense de que todos puedan explicar la propuesta.</p><p class="help">El docente puede ajustar los tiempos al registrar cada equipo. Consulten la cuenta regresiva de su grupo.</p></div><figure><img data-activity-image="Explicación2.png" src="assets/activity/pitch.png" width="523" height="393" loading="lazy" alt="Dos estudiantes presentan una propuesta tecnológica ante un público, apoyándose en una pantalla y un esquema del diseño." aria-describedby="activity-reading-pitch">
+<figcaption id="activity-reading-pitch" class="card-transcript activity-description" role="region" aria-label="Descripción de la imagen: Presentación de la solución" hidden><h3>Descripción de la imagen: Presentación de la solución</h3>
+<p>Dos estudiantes presentan una propuesta tecnológica ante un público que observa y toma notas. Se apoyan en una pantalla con una ciudad, una aplicación y símbolos asociados a la seguridad, la sostenibilidad, la eficiencia y la facilidad de uso.</p>
+ <p>A un lado hay un tablero con un esquema, flechas y notas. La escena muestra cómo acompañar el pitch con representaciones gráficas para explicar la solución y sus decisiones de diseño.</p>
+</figcaption></figure></div>
+  <div class="activity-deliverables">
+   <article><span class="deliverable-number">1</span><h3>Pitch de 2–3 minutos</h3><p>Presenten su propuesta con claridad:</p><ul><li><strong>Problema:</strong> ¿qué ocurre y a quién afecta?</li><li><strong>Solución:</strong> ¿qué proponen y cómo funciona?</li><li><strong>Valor:</strong> ¿qué aporta y por qué merece el apoyo del inversionista?</li></ul></article>
+   <article><span class="deliverable-number">2</span><h3>Modelo en notación no formal</h3><p>Dibujen a mano una abstracción de su solución que represente el software, sus componentes, las tecnologías utilizadas y las relaciones entre ellos.</p><p>Pueden usar un esquema, un mapa conceptual o un dibujo. Incluyan etiquetas y conexiones claras para que otras personas comprendan cómo funciona.</p></article>
+   <article><span class="deliverable-number">3</span><h3>Justificación técnica</h3><p>Defiendan las decisiones de diseño:</p><ul><li>¿Por qué eligieron este diseño?</li><li>¿Cómo escala la solución?</li><li>¿Qué módulos existen?</li><li>¿Qué actor es crítico?</li></ul></article>
+  </div>
+ </section>
+</section>
+
+<section id="panel-arena" class="tab-panel" role="tabpanel" aria-labelledby="tab-arena" tabindex="0" hidden>
+<section class="intro"><div><div class="eyebrow">Tres tarjetas. Un desafío.</div><h1>Sorteo de desafíos</h1><p>Un contexto, un problema y un inversionista para tu equipo. Conecten las tres tarjetas, diseñen una solución tecnológica y preparen su pitch.</p></div><div class="counter"><strong id="remaining">10</strong><span>asignaciones<br>disponibles</span></div></section>
+<section class="draw-panel" aria-label="Sortear tarjetas"><div class="deck-info"><span><i class="dot"></i><b id="ct-count">13</b> contextos</span><span><i class="dot problem"></i><b id="p-count">10</b> problemas</span><span><i class="dot investor"></i><b id="in-count">10</b> inversionistas</span><span>Sin repetir tarjetas en esta ronda</span></div>
+<form id="draw-form" novalidate><div class="field"><label for="group-name">Nombre del grupo</label><input id="group-name" name="group" placeholder="Ej. Los innovadores" maxlength="80" autocomplete="off" aria-describedby="message"></div><div class="field timing-field"><label for="total-minutes">Tiempo total (min)</label><input id="total-minutes" type="number" min="0" max="1440" step="any" value="30" required aria-describedby="timing-hint message"></div><div class="field timing-field"><label for="change-minutes">Cambio a los (min)</label><input id="change-minutes" type="number" min="0" step="any" value="15" required aria-describedby="timing-hint message"></div><button class="primary" id="draw-button" type="submit">Sortear tarjetas <span aria-hidden="true">↗</span></button></form>
+<p class="timing-hint" id="timing-hint">Los tiempos empiezan al sortear. El cambio llega automáticamente antes del final; por ejemplo, 30 minutos en total y cambio a los 15.</p>
+<p class="help" id="save-status">Las asignaciones se guardan automáticamente en este navegador.</p><p id="message" class="message" role="status" aria-live="polite"></p></section>
+<section aria-labelledby="results-title"><div class="results-head"><div><h2 id="results-title">Equipos en la arena <span id="total">· 0</span></h2><p>Estos son los desafíos de la ronda actual.</p></div><button id="reset" class="reset" type="button">Reiniciar sorteo</button></div><div id="results"></div></section>
+</section>
+<section id="panel-guide" class="tab-panel" role="tabpanel" aria-labelledby="tab-guide" tabindex="0" hidden>
+ <div class="panel-heading"><div class="eyebrow">Diseño detallado de Software · 6.º semestre</div><h1>Guía del docente</h1><p>Del desafío inicial a la revisión del modelo, paso a paso.</p></div>
+ <ol class="teacher-guide">
+  <li><h2>Prepare la actividad</h2><p>Organice hasta 10 equipos. Cada uno diseñará una solución tecnológica que conecte un contexto, un problema y los intereses de un inversionista, y preparará un pitch. Abra esta aplicación en el equipo del docente para gestionar toda la ronda.</p></li>
+  <li><h2>Registre el equipo y sus tiempos</h2><p>En «Sorteo y equipos», escriba un nombre único, el tiempo total de trabajo y el minuto en que llegará el cambio del inversionista. Por ejemplo: 30 minutos en total y cambio a los 15 minutos. Ambos tiempos se cuentan desde el sorteo; el cambio debe ocurrir antes del final. Puede utilizar decimales, por ejemplo 0,5 minutos.</p></li>
+  <li><h2>Sortee las tres tarjetas</h2><p>Pulse «Sortear tarjetas». Se asignará una tarjeta de cada categoría y el reloj del equipo comenzará inmediatamente. Las tarjetas no se repiten dentro de la ronda. Puede asignar tiempos diferentes a cada equipo.</p><p>Si ya había grupos guardados antes de esta actualización, use «Iniciar tiempos» en cada uno para programarlos sin modificar sus tarjetas ni su avance.</p></li>
+  <li><h2>Acompañe el diseño inicial</h2><p>Pida que identifiquen requisitos, componentes y relaciones del sistema. La cuenta regresiva muestra el tiempo restante. Active «Vista de lectura» para mostrar el texto de las tarjetas y las descripciones de las cuatro imágenes de «La actividad», con letra ampliada y alto contraste.</p></li>
+  <li><h2>Revele la nueva condición</h2><p>En el minuto programado, el cambio del inversionista se revelará automáticamente y quedará guardado. Cada equipo deberá discutir la pregunta y ajustar su solución. En los grupos con tiempo programado, el botón manual estará deshabilitado mientras esperan el cambio.</p></li>
+  <li><h2>Recoja las soluciones</h2><p>Después del cambio, cada equipo puede adjuntar una imagen de su modelo y marcar «Solución entregada». Al agotarse el tiempo aparecerá «Tiempo finalizado»; esto no marca la solución como entregada automáticamente. La imagen y el botón seguirán disponibles para que el docente pueda registrar la entrega.</p></li>
+  <li><h2>Evalúe a cada equipo</h2><p>Cuando finalicen los tiempos de todos los grupos registrados, se abrirá «Evaluación». Si un grupo antiguo aún no tiene tiempos, prográmelos primero. Revise el modelo y el pitch y seleccione «Sí» o «No» en cada criterio. Cada «Sí» suma 10 %; los «No» y los criterios sin responder no suman. Puede cambiar cualquier respuesta para corregir su revisión.</p><p>Las tarjetas se muestran en pequeño. «Ver solución y cambio recibido» permite consultar la imagen adjunta y la condición adicional. Las respuestas se guardan automáticamente; la barra muestra criterios cumplidos sobre los diez criterios. Cuando haya respondido los diez criterios de todos los equipos, se habilitará «Descargar resumen de evaluación» al final de la vista. El archivo CSV contiene cada equipo y su porcentaje logrado. Junto a la descarga, «Podium» muestra los tres porcentajes más altos en un carrusel. Los equipos empatados comparten lugar; el siguiente porcentaje ocupa el siguiente puesto (por ejemplo: 90 % y 90 % comparten P1; 80 % ocupa P2).</p></li>
+  <li><h2>Cierre o inicie otra ronda</h2><p>Puede volver a consultar cualquier pestaña. Para empezar otra actividad, use «Reiniciar sorteo» en «Sorteo y equipos» y confirme. Se borrarán grupos, tiempos, cambios, imágenes, entregas y evaluaciones de esa ronda.</p></li>
+ </ol>
+ <aside class="guide-note"><strong>Continuidad de la sesión</strong><p>Use el mismo navegador y mantenga el archivo en la misma ubicación. Los plazos continúan aunque recargue o cierre la página. Manténgala abierta y el computador activo para ver las notificaciones a tiempo; si se suspende o cierra, los eventos vencidos se aplicarán al regresar. Los datos no se comparten entre computadores.</p></aside>
+</section>
+<section id="panel-evaluation" class="tab-panel" role="tabpanel" aria-labelledby="tab-evaluation" tabindex="0" hidden>
+ <div class="panel-heading"><div class="eyebrow">Revisión del modelo</div><h1>Evaluación por equipo</h1><p>Seleccione «Sí» o «No» en cada criterio. Cada «Sí» suma 10 %; los «No» y los criterios sin responder no suman. Las respuestas se guardan automáticamente.</p></div>
+ <p id="evaluation-wait" class="empty"></p>
+ <div id="evaluation-results"></div>
+ <div id="evaluation-export" class="evaluation-export" hidden>
+  <div class="evaluation-actions"><button id="download-evaluation" class="primary" type="button" disabled aria-describedby="evaluation-export-help">Descargar resumen de evaluación</button>
+  <button id="show-podium" class="podium-button" type="button" disabled aria-haspopup="dialog" aria-controls="podium-dialog" aria-describedby="evaluation-export-help">Podium</button></div>
+  <p id="evaluation-export-help">Responda «Sí» o «No» en los diez criterios de todos los equipos para habilitar la descarga del resumen CSV y el Podium.</p>
+  <p id="evaluation-export-status" class="evaluation-status" role="status" aria-live="polite"></p>
+ </div>
+</section>
+
+<footer>Hasta 10 equipos por ronda. Al completar los sorteos quedarán 3 contextos sin asignar.</footer>
+</main>
+<dialog id="podium-dialog" class="podium-dialog" aria-labelledby="podium-title" aria-describedby="podium-description">
+ <div class="podium-header"><div><div class="eyebrow">Startup Arena · Resultados</div><h2 id="podium-title">Podium</h2></div><button id="close-podium" type="button" aria-label="Cerrar Podium" autofocus>Cerrar <span aria-hidden="true">×</span></button></div>
+ <p id="podium-description">Los tres porcentajes más altos ocupan los puestos P1, P2 y P3. Los equipos con el mismo porcentaje comparten lugar; el siguiente porcentaje ocupa el siguiente puesto.</p>
+ <div id="podium-carousel" role="region" aria-roledescription="carrusel" aria-label="Equipos destacados">
+  <section id="podium-slide-1" class="podium-slide" role="group" aria-roledescription="diapositiva" aria-labelledby="podium-rank-1" hidden>
+   <img data-podium-image="P3.jpeg" data-podium-rank="1" src="assets/podium/first.jpeg" width="1584" height="1408" alt="Primer lugar: trofeo con el número 1.">
+   <div class="podium-winners"><span class="podium-rank-code">P1</span><h3 id="podium-rank-1">Primer lugar</h3><p id="podium-score-1" class="podium-score"></p><p id="podium-tie-1" class="podium-tie" hidden>Lugar compartido</p><ul id="podium-teams-1" class="podium-teams"></ul></div>
+  </section>
+  <section id="podium-slide-2" class="podium-slide" role="group" aria-roledescription="diapositiva" aria-labelledby="podium-rank-2" hidden>
+   <img data-podium-image="P2.jpeg" data-podium-rank="2" src="assets/podium/second.jpeg" width="1584" height="1408" alt="Segundo lugar: trofeo con el número 2.">
+   <div class="podium-winners"><span class="podium-rank-code">P2</span><h3 id="podium-rank-2">Segundo lugar</h3><p id="podium-score-2" class="podium-score"></p><p id="podium-tie-2" class="podium-tie" hidden>Lugar compartido</p><ul id="podium-teams-2" class="podium-teams"></ul></div>
+  </section>
+  <section id="podium-slide-3" class="podium-slide" role="group" aria-roledescription="diapositiva" aria-labelledby="podium-rank-3" hidden>
+   <img data-podium-image="P1.jpeg" data-podium-rank="3" src="assets/podium/third.jpeg" width="1584" height="1408" alt="Tercer lugar: trofeo con el número 3.">
+   <div class="podium-winners"><span class="podium-rank-code">P3</span><h3 id="podium-rank-3">Tercer lugar</h3><p id="podium-score-3" class="podium-score"></p><p id="podium-tie-3" class="podium-tie" hidden>Lugar compartido</p><ul id="podium-teams-3" class="podium-teams"></ul></div>
+  </section>
+ </div>
+ <div class="podium-controls"><button id="podium-prev" type="button" aria-label="Mostrar puesto anterior" aria-controls="podium-carousel">← Anterior</button><div class="podium-positions" role="group" aria-label="Elegir puesto"><button id="podium-go-1" type="button" aria-label="Mostrar primer lugar" aria-pressed="false">P1</button><button id="podium-go-2" type="button" aria-label="Mostrar segundo lugar" aria-pressed="false">P2</button><button id="podium-go-3" type="button" aria-label="Mostrar tercer lugar" aria-pressed="false">P3</button></div><button id="podium-next" type="button" aria-label="Mostrar puesto siguiente" aria-controls="podium-carousel">Siguiente →</button></div>
+ <p id="podium-announcement" class="podium-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+</dialog>
+
+<dialog id="reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description"><h2 id="reset-title">¿Reiniciar el sorteo?</h2><p id="reset-description">Se eliminarán las asignaciones, los tiempos, las imágenes y las evaluaciones de todos los equipos y las 33 tarjetas volverán a estar disponibles. Esta acción no se puede deshacer.</p><div class="dialog-actions"><button id="cancel-reset" autofocus>Cancelar</button><button id="confirm-reset" class="danger">Sí, reiniciar</button></div></dialog>
+<script>
+'use strict';
+const CARDS={"CT": [{"id": "CT1", "name": "Hospital", "image": "assets/cards/CT1.png"}, {"id": "CT2", "name": "Nave espacial", "image": "assets/cards/CT2.png"}, {"id": "CT3", "name": "Supermercado", "image": "assets/cards/CT3.png"}, {"id": "CT4", "name": "Ciudad futurista", "image": "assets/cards/CT4.png"}, {"id": "CT5", "name": "Zoológico", "image": "assets/cards/CT5.png"}, {"id": "CT6", "name": "Universidad", "image": "assets/cards/CT6.png"}, {"id": "CT7", "name": "Hotel", "image": "assets/cards/CT7.png"}, {"id": "CT8", "name": "Aeropuerto", "image": "assets/cards/CT8.png"}, {"id": "CT9", "name": "Parque temático", "image": "assets/cards/CT9.png"}, {"id": "CT10", "name": "Isla turística", "image": "assets/cards/CT10.png"}, {"id": "CT11", "name": "Castillo medieval", "image": "assets/cards/CT11.png"}, {"id": "CT12", "name": "Crucero de lujo", "image": "assets/cards/CT12.png"}, {"id": "CT13", "name": "Colonia en Marte", "image": "assets/cards/CT13.png"}], "P": [{"id": "P1", "name": "Zombies", "image": "assets/cards/P1.png"}, {"id": "P2", "name": "Dragones", "image": "assets/cards/P2.png"}, {"id": "P3", "name": "Mascotas desobedientes", "image": "assets/cards/P3.png"}, {"id": "P4", "name": "Fantasmas", "image": "assets/cards/P4.png"}, {"id": "P5", "name": "Robots emo (depresivos)", "image": "assets/cards/P5.png"}, {"id": "P6", "name": "Viajes temporales", "image": "assets/cards/P6.png"}, {"id": "P7", "name": "Clientes tóxicos", "image": "assets/cards/P7.png"}, {"id": "P8", "name": "Crisis energética", "image": "assets/cards/P8.png"}, {"id": "P9", "name": "Bucles temporales aleatorios", "image": "assets/cards/P9.png"}, {"id": "P10", "name": "Objetos con conciencia propia", "image": "assets/cards/P10.png"}], "IN": [{"id": "IN1", "name": "OpenAI Ventures", "image": "assets/cards/IN1.png"}, {"id": "IN2", "name": "CryptoBros Capital", "image": "assets/cards/IN2.png"}, {"id": "IN3", "name": "Amazon Systems", "image": "assets/cards/IN3.png"}, {"id": "IN4", "name": "NASA Tech", "image": "assets/cards/IN4.png"}, {"id": "IN5", "name": "EcoTech", "image": "assets/cards/IN5.png"}, {"id": "IN6", "name": "Ubisoft Ventures", "image": "assets/cards/IN6.png"}, {"id": "IN7", "name": "Indie Studio", "image": "assets/cards/IN7.png"}, {"id": "IN8", "name": "X Labs", "image": "assets/cards/IN8.png"}, {"id": "IN9", "name": "MedTech Ventures", "image": "assets/cards/IN9.png"}, {"id": "IN10", "name": "SafeNet Security", "image": "assets/cards/IN10.png"}]};
+const KEY='startup-arena.round.v1';
+const $=id=>document.getElementById(id);
+let assignments=[],blocked=false;
+const normalize=name=>name.normalize('NFKC').trim().replace(/\s+/g,' ').toLocaleLowerCase('es');
+const clean=name=>name.normalize('NFKC').trim().replace(/\s+/g,' ');
+function validate(data){
+ if(!data||data.version!==1||!Array.isArray(data.assignments)||data.assignments.length>10)throw Error('Datos inválidos');
+ const names=new Set(),used={CT:new Set(),P:new Set(),IN:new Set()};
+ for(const row of data.assignments){if(!row||typeof row.name!=='string'||!normalize(row.name)||row.name.length>80||names.has(normalize(row.name)))throw Error('Grupo inválido');names.add(normalize(row.name));for(const key of Object.keys(used)){if(!CARDS[key].some(c=>c.id===row[key])||used[key].has(row[key]))throw Error('Tarjeta inválida');used[key].add(row[key]);}}
+ return data.assignments;
+}
+function message(text,error=false){$('message').textContent=text;$('message').classList.toggle('error',error);}
+function persist(next){try{localStorage.setItem(KEY,JSON.stringify({version:1,assignments:next}));return true;}catch{message('No se pudo guardar el sorteo. Habilita el almacenamiento del navegador y vuelve a intentarlo. No se asignaron ni eliminaron tarjetas.',true);return false;}}
+function load(){try{const raw=localStorage.getItem(KEY);assignments=raw?validate(JSON.parse(raw)):[];}catch{blocked=true;message('No se pudo leer la ronda guardada. Para comenzar una nueva ronda, usa «Reiniciar sorteo».',true);}}
+function available(key){const used=new Set(assignments.map(a=>a[key]));return CARDS[key].filter(c=>!used.has(c.id));}
+function pick(cards){const buf=new Uint32Array(1),limit=4294967296-(4294967296%cards.length);do{crypto.getRandomValues(buf);}while(buf[0]>=limit);return cards[buf[0]%cards.length].id;}
+function render(){
+ timerViews.clear();groupDisplays.clear();
+ const remaining=Math.min(...Object.keys(CARDS).map(k=>available(k).length));
+ $('remaining').textContent=blocked?'—':remaining;$('ct-count').textContent=available('CT').length;$('p-count').textContent=available('P').length;$('in-count').textContent=available('IN').length;$('total').textContent='· '+assignments.length;$('draw-button').disabled=blocked||remaining===0;$('group-name').disabled=blocked||remaining===0;$('reset').disabled=!blocked&&!assignments.length;
+ $('results').replaceChildren();
+ if(!assignments.length){const empty=document.createElement('div');empty.className='empty';const title=document.createElement('strong');title.textContent=blocked?'Ronda guardada no disponible':'La próxima gran idea comienza aquí';empty.append(title,document.createTextNode(blocked?'Reinicia el sorteo para recuperar una ronda vacía.':'Escribe el nombre del primer grupo y sortea sus tres tarjetas.'));$('results').append(empty);}
+ assignments.slice().reverse().forEach((row,index)=>{const section=document.createElement('article');section.className='group';const header=document.createElement('div');header.className='group-head';const number=document.createElement('span');number.className='number';number.textContent=String(assignments.length-index).padStart(2,'0');const name=document.createElement('h3');name.textContent=row.name;header.append(number,name);attachTeamTimer(header,row);section.append(header);const grid=document.createElement('div');grid.className='cards';for(const [key,label] of [['CT','Contexto'],['P','Problema'],['IN','Inversionista']]){const card=CARDS[key].find(c=>c.id===row[key]);const fig=document.createElement('figure');fig.className='card';const caption=document.createElement('figcaption');caption.textContent=label;const id=document.createElement('small');id.textContent=card.id;caption.append(id);const img=document.createElement('img');img.src=card.image;img.alt=label+': '+card.name;img.loading=index===0?'eager':'lazy';const text=document.createElement('p');text.className='card-name';text.textContent=card.name;fig.append(caption,img);appendCardReading(fig,img,card,label);fig.append(text);grid.append(fig);}section.append(grid);addInvestorExtension(section,row);$('results').append(section);});
+ synchronizeTeacherViews();
+ if(!blocked&&remaining===0)message('Ronda completa: no hay combinaciones completas disponibles. Los 10 problemas y los 10 inversionistas ya fueron asignados. Reinicia el sorteo para comenzar otra ronda.');
+}
+$('draw-form').addEventListener('submit',event=>{event.preventDefault();if(blocked)return;load();if(blocked){render();return;}const name=clean($('group-name').value);if(!name){message('Escribe el nombre del grupo antes de sortear.',true);$('group-name').focus();return;}if(name.length>80){message('Usa un nombre de hasta 80 caracteres.',true);return;}if(assignments.some(a=>normalize(a.name)===normalize(name))){message('Este grupo ya tiene tarjetas asignadas. Usa un nombre de grupo diferente.',true);$('group-name').focus();return;}if(Object.keys(CARDS).some(k=>!available(k).length)){render();return;}let timing;try{timing=readTiming($('total-minutes').value,$('change-minutes').value);}catch(error){message(error.message,true);return;}const row={name,timing,assignmentId:crypto.randomUUID()};for(const key of Object.keys(CARDS))row[key]=pick(available(key));const next=[...assignments,row];if(!persist(next))return;assignments=next;$('group-name').value='';message('Tarjetas asignadas a '+name+'. Su desafío ya está en la arena.');render();if(assignments.length<10)$('group-name').focus();});
+$('reset').addEventListener('click',()=>$('reset-dialog').showModal());
+$('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());
+$('confirm-reset').addEventListener('click',()=>{if(!persist([])){$('reset-dialog').close();return;}assignments=[];blocked=false;$('reset-dialog').close();message('Sorteo reiniciado. Todas las tarjetas están disponibles.');render();$('group-name').value='';$('group-name').focus();});
+window.addEventListener('storage',event=>{if(event.key===KEY){blocked=false;load();message('La ronda se actualizó desde otra pestaña.');render();}});
+const INVESTOR_CHANGES = {
+ IN1: {title:'IA explicable',condition:'Toda recomendación generada por IA debe mostrar al usuario los factores que la justifican y permitir una revisión humana.',question:'¿Cómo separarían la recomendación automática, su explicación y la revisión humana en el diseño?'},
+ IN2: {title:'Blockchain con límite',condition:'Solo se financiará una operación en blockchain por proceso; el resto deberá ejecutarse fuera de la cadena.',question:'¿Qué operación merece ser inmutable y cómo mantendrían coherentes ambos registros?'},
+ IN3: {title:'Escalabilidad urgente',condition:'La solución debe pasar de 100 a 10.000 usuarios simultáneos sin aumentar más del doble el costo de infraestructura.',question:'¿Qué componente rediseñarían primero para evitar que se convierta en un cuello de botella?'},
+ IN4: {title:'Misión sin conexión',condition:'El sistema debe mantener sus funciones críticas durante 24 horas sin comunicación con el centro de control.',question:'¿Qué decisiones delegarían al sistema local y cómo resolverían conflictos al recuperar la conexión?'},
+ IN5: {title:'Mitad de energía',condition:'La solución debe reducir en un 50 % su consumo energético estimado, conservando su función principal.',question:'¿Qué tareas reducirían, aplazarían o rediseñarían y cómo comprobarían el ahorro?'},
+ IN6: {title:'Juego accesible',condition:'Todas las acciones esenciales deben poder completarse sin sonido y sin depender de respuestas rápidas del usuario.',question:'¿Cómo cambiarían las interacciones y las reglas sin perder el atractivo de la experiencia?'},
+ IN7: {title:'Recorte de presupuesto',condition:'El inversionista financiará solo el 40 % del presupuesto inicial; el producto debe conservar una experiencia creativa diferenciadora.',question:'¿Qué módulo conservarían como producto mínimo viable y qué funciones aplazarían?'},
+ IN8: {title:'Autonomía supervisada',condition:'Toda acción irreversible propuesta por IA o robótica requiere autorización humana y debe poder detenerse antes de ejecutarse.',question:'¿Dónde incorporarían los estados de aprobación y cancelación sin bloquear el resto del sistema?'},
+ IN9: {title:'Privacidad clínica',condition:'No se pueden almacenar datos personales ni historiales de salud en el servidor; solo pueden procesarse temporalmente en el dispositivo del usuario.',question:'¿Cómo rediseñarían el flujo de datos y el seguimiento sin conservar información identificable?'},
+ IN10: {title:'Confianza cero',condition:'Cada operación sensible debe verificar identidad y permisos, incluso dentro de una sesión ya iniciada, y dejar una evidencia de auditoría sin datos personales.',question:'¿Cómo distribuirían la autorización y la auditoría sin crear un único punto de fallo?'}
+};
+const pendingChanges=new Set();
+function extensionElement(tag,className,text){const el=document.createElement(tag);el.className=className;if(text)el.textContent=text;return el;}
+function sameAssignment(a,b){return (!(a.assignmentId||b.assignmentId)||a.assignmentId===b.assignmentId)&&a.name===b.name&&a.CT===b.CT&&a.P===b.P&&a.IN===b.IN;}
+function saveExtension(row,fields,feedback){
+ load();if(blocked){feedback.textContent='No se pudo leer la ronda. Recarga la página antes de continuar.';return null;}
+ const current=assignments.find(a=>sameAssignment(a,row));
+ if(!current||((fields.solutionImage||fields.solutionDelivered)&&current.changeToken!==row.changeToken)){feedback.textContent='La asignación cambió o la ronda fue reiniciada. Recarga la página.';return null;}
+ if(fields.solutionDelivered&&!current.investorChange){feedback.textContent='Primero recibe el cambio del inversionista.';return null;}
+ if(fields.investorChange&&current.investorChange)return current;
+ const updated={...current,...fields};const next=assignments.map(a=>a===current?updated:a);
+ if(!persist(next)){feedback.textContent='No se pudo guardar. El almacenamiento puede estar lleno o bloqueado. Inténtalo de nuevo; se conserva lo guardado anteriormente.';return null;}
+ assignments=next;return updated;
+}
+function addInvestorExtension(section,row){
+ const progress=extensionElement('ol','team-progress');section.append(progress);
+ const area=extensionElement('div','investor-extension');
+ const feedback=extensionElement('p','extension-feedback');feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
+ const key=JSON.stringify([row.name,row.CT,row.P,row.IN]);
+ function display(current){
+ updateTeamProgress(progress,current);
+ area.replaceChildren();
+ if(!current.investorChange){
+ const button=extensionElement('button','change-button','Recibir cambio del inversionista');button.type='button';
+ if(timingValid(current.timing)){button.disabled=true;button.textContent='Cambio del inversionista programado';}
+ const icon=extensionElement('span','investment-icon','◈ ');icon.setAttribute('aria-hidden','true');button.prepend(icon);
+ button.addEventListener('click',()=>{
+ if(button.disabled||pendingChanges.has(key))return;
+ button.disabled=true;
+ const saved=saveExtension(current,{investorChange:{...INVESTOR_CHANGES[current.IN]},changeToken:crypto.randomUUID()},feedback);
+ if(!saved){button.disabled=false;return;}
+ pendingChanges.add(key);display(saved);
+ setTimeout(()=>{pendingChanges.delete(key);if(area.isConnected){display(saved);const heading=area.querySelector('h4');if(heading)heading.focus();}},950);
+ });area.append(button,feedback);return;
+ }
+ if(pendingChanges.has(key)){
+ const notice=extensionElement('div','investor-notification','◈ Notificación del inversionista…');notice.setAttribute('role','status');area.append(notice);
+ // A different render may replace this node during the brief notification.
+ setTimeout(()=>{if(area.isConnected&&!pendingChanges.has(key))display(current);},1050);return;
+ }
+ const status=extensionElement('span','change-received','✓ Cambio recibido');
+ const panel=extensionElement('section','change-panel');
+ const heading=extensionElement('h4','','◈ Cambio de condiciones');heading.tabIndex=-1;
+ const title=extensionElement('h5','',current.investorChange.title);
+ const condition=extensionElement('p','',current.investorChange.condition);
+ const question=extensionElement('p','change-question',current.investorChange.question);
+ panel.append(heading,title,condition,question);
+ const solution=extensionElement('div','solution-upload');
+ const label=extensionElement('label','','Imagen de la solución · notación no formal');
+ const input=extensionElement('input','');input.type='file';input.accept='image/png,image/jpeg,image/webp';
+ label.append(input);
+ const help=extensionElement('p','help','Adjunta un boceto, esquema o fotografía (PNG, JPG o WebP, hasta 15 MB). Se guardará una versión optimizada hasta reiniciar el sorteo.');
+ solution.append(label,help);
+ if(current.solutionImage){const img=extensionElement('img','solution-image');img.src=current.solutionImage;img.alt='Solución en notación no formal del grupo '+current.name;solution.append(img);}
+ input.addEventListener('change',async()=>{
+ const file=input.files[0];if(!file)return;
+ input.disabled=true;feedback.textContent='Preparando la imagen de la solución…';
+ try{const data=await prepareSolutionImage(file);const saved=saveExtension(current,{solutionImage:data},feedback);if(saved){display(saved);feedback.textContent='Imagen guardada. Permanecerá al recargar y se eliminará al reiniciar el sorteo.';}}
+ catch(error){feedback.textContent=error.message;}
+ finally{input.disabled=false;input.value='';}
+ });
+ area.append(status,panel,solution,feedback);
+ appendDeliveryButton(area,current,feedback,display);
+ }
+ groupDisplays.set(groupKey(row),display);
+ display(row);section.append(area);
+}
+async function prepareSolutionImage(file){
+ if(!['image/png','image/jpeg','image/webp'].includes(file.type))throw Error('Selecciona una imagen PNG, JPG o WebP.');
+ if(file.size>15*1024*1024)throw Error('La imagen supera los 15 MB. Selecciona una imagen más pequeña.');
+ const url=URL.createObjectURL(file);
+ try{
+ const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error('No se pudo leer la imagen. Prueba con otro archivo.'));img.src=url;});
+ const canvas=document.createElement('canvas');const ratio=Math.min(1,1600/Math.max(img.naturalWidth,img.naturalHeight));canvas.width=Math.max(1,Math.round(img.naturalWidth*ratio));canvas.height=Math.max(1,Math.round(img.naturalHeight*ratio));
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+ for(const quality of [.88,.76,.64,.5,.38]){const data=canvas.toDataURL('image/jpeg',quality);if(data.length<=180000)return data;}
+ throw Error('La imagen contiene demasiado detalle para guardarla. Recorta el área del esquema o adjunta una imagen más sencilla.');
+ }finally{URL.revokeObjectURL(url);}
+}
+
+// Transcripción literal de los textos legibles en las tarjetas originales.
+const CARD_TEXT={
+ CT1:['HOSPITAL'],CT2:['NAVE ESPACIAL'],CT3:['SUPERMERCADO'],CT4:['CIUDAD FUTURISTA'],CT5:['ZOOLÓGICO'],CT6:['UNIVERSIDAD'],CT7:['HOTEL','HOTEL'],CT8:['AEROPUERTO'],CT9:['PARQUE TEMÁTICO'],
+ CT10:['ISLA TURÍSTICA','PLAYA','EXCURSIONES','HOTEL','RESTAURANTES'],
+ CT11:['CASTILLO MEDIEVAL','SALÓN DEL TRONO','MAZMORRAS','TORRE DEL MAGO','MERCADO'],
+ CT12:['CRUCERO DE LUJO','RESTAURANTES','SPA & BIENESTAR','ENTRETENIMIENTO','EXCURSIONES'],
+ CT13:['COLONIA EN MARTE','HÁBITAT','LABORATORIO','INVERNADERO','CENTRO DE CONTROL'],
+ P1:['ZOMBIES','Una infección o comportamiento masivo fuera de control está afectando a los usuarios o habitantes del entorno. El sistema debe gestionar alertas, supervivencia, control de accesos o coordinación en situaciones caóticas.'],
+ P2:['DRAGONES','Criaturas extremadamente peligrosas o difíciles de controlar amenazan el funcionamiento normal del entorno. El software debe monitorear riesgos, coordinar respuestas y proteger recursos o personas.'],
+ P3:['MASCOTAS DESOBEDIENTES','Las mascotas inteligentes o automatizadas ignoran instrucciones, generan caos o desarrollan comportamientos inesperados. El sistema debe corregir, monitorear y adaptar sus respuestas ante estas conductas.'],
+ P4:['FANTASMAS','Entidades invisibles o fenómenos inexplicables interfieren con el entorno, alterando dispositivos, información o interacciones. El software debe detectar anomalías y mantener la estabilidad del sistema.'],
+ P5:['ROBOTS EMO (DEPRESIVOS)','Los robots han desarrollado estados emocionales negativos que afectan su productividad, interacción o toma de decisiones. El sistema debe monitorear emociones simuladas y aplicar estrategias para estabilizar su comportamiento.'],
+ P6:['VIAJES TEMPORALES','Los usuarios o eventos pueden desplazarse entre diferentes momentos del tiempo, provocando inconsistencias, duplicación de información o cambios inesperados en el sistema.'],
+ P7:['CLIENTES TÓXICOS','Los usuarios presentan comportamientos conflictivos, abusivos o excesivamente demandantes que afectan la operación del sistema y la experiencia de otros usuarios. El software debe gestionar límites, moderación y control de interacciones.'],
+ P8:['CRISIS ENERGÉTICA','El entorno enfrenta escasez o fallas constantes de energía, obligando al sistema a optimizar recursos, priorizar funciones críticas y mantener la operación bajo condiciones limitadas.'],
+ P9:['BUCLES TEMPORALES ALEATORIOS','Los usuarios quedan atrapados repitiendo eventos del sistema una y otra vez, generando inconsistencias, duplicación de datos y comportamientos impredecibles.'],
+ P10:['OBJETOS CON CONCIENCIA PROPIA','Los dispositivos, máquinas o elementos del entorno comienzan a tomar decisiones por cuenta propia y rechazan ciertas órdenes de los usuarios o administradores del sistema.'],
+ IN1:['OpenAI Ventures','INVERSIONISTA','LO QUE BUSCA','Promover el uso de su motor de IA y automatización.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN2:['CryptoBros Capital','INVERSIONISTA','BITBROS','LO QUE BUSCA','Blockchain aunque no tenga sentido, promover el uso de su criptomoneda el BitBros.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN3:['Amazon Systems','INVERSIONISTA','aws','LO QUE BUSCA','Que los sistemas use su infraestructura y promover la escalabilidad.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN4:['NASA Tech','INVERSIONISTA','NASA','LO QUE BUSCA','Sistemas críticos que tengan que ver con exploración espacial o submarina.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN5:['EcoTech','INVERSIONISTA','LO QUE BUSCA','Sostenibilidad, salvar el planeta.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN6:['Ubisoft Ventures','INVERSIONISTA','LO QUE BUSCA','Gamificación, videojuegos y entretenimiento.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN7:['Indie Studio','INVERSIONISTA','LO QUE BUSCA','Creatividad, proyectos fuera de lo común.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN8:['X Labs','INVERSIONISTA','X LABS','LO QUE BUSCA','Soluciones disruptivas basadas en Inteligencia Artificial, visión por computadora o robótica que puedan cambiar la forma en que vivimos.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN9:['MedTech Ventures','INVERSIONISTA','LO QUE BUSCA','Soluciones enfocadas en mejorar la salud, la medicina, la telemedicina, el bienestar de las personas.','CAPITAL PARA INVERTIR','$100 millones'],
+ IN10:['SafeNet Security','INVERSIONISTA','LO QUE BUSCA','Sistemas donde la ciberseguridad, la protección de datos, la privacidad y la gestión de riesgos sean el eje principal de la solución.','CAPITAL PARA INVERTIR','$100 millones']
+};
+let readingView=false;
+function appendCardReading(fig,img,card,label){
+ const lines=CARD_TEXT[card.id];
+ img.alt='Tarjeta de '+label.toLocaleLowerCase('es')+': '+lines[0]+'.';
+ const transcript=extensionElement('div','card-transcript');
+ transcript.hidden=!readingView;
+ transcript.setAttribute('role','region');
+ transcript.setAttribute('aria-label','Transcripción de la tarjeta '+card.id+': '+lines[0]);
+ lines.forEach((line,i)=>transcript.append(extensionElement(i===0?'h4':'p','',line)));
+ fig.append(transcript);
+}
+$('reading-view').addEventListener('change',event=>{
+ readingView=event.target.checked;
+ document.querySelectorAll('.card-transcript').forEach(el=>{el.hidden=!readingView;});
+});
+function updateTeamProgress(progress,row){
+ const done=row.solutionDelivered===true&&!!row.investorChange?3:row.investorChange?2:1;
+ progress.replaceChildren();
+ progress.setAttribute('aria-label','Progreso de '+row.name+': '+done+' de 3 estados completados');
+ ['Tarjetas asignadas','Cambio del inversionista recibido','Solución entregada'].forEach((label,i)=>{
+ const state=i<done?'completed':i===done?'current':'pending';
+ const step=extensionElement('li','team-step '+state);
+ const mark=extensionElement('span','step-marker',i<done?'✓':String(i+1));mark.setAttribute('aria-hidden','true');
+ const text=extensionElement('span','step-label',label);
+ const status=extensionElement('small','step-status',state==='completed'?'Completado':state==='current'?'Actual':'Pendiente');
+ if(state==='current')step.setAttribute('aria-current','step');
+ text.append(status);step.append(mark,text);progress.append(step);
+ });
+}
+function appendDeliveryButton(area,current,feedback,display){
+ const button=extensionElement('button','delivery-button',current.solutionDelivered?'Solución entregada':'Marcar solución entregada');
+ button.type='button';button.disabled=current.solutionDelivered===true;
+ button.setAttribute('aria-label',button.textContent+' · '+current.name);
+ button.addEventListener('click',()=>{
+ if(button.disabled)return;button.disabled=true;
+ const saved=saveExtension(current,{solutionDelivered:true},feedback);
+ if(!saved){button.disabled=false;return;}
+ display(saved);feedback.textContent='Solución entregada. Progreso del equipo completado.';
+ feedback.tabIndex=-1;feedback.focus();
+ });area.append(button);
+}
+
+const CHECKLIST=[
+ 'El modelo refleja claramente el contexto propuesto.',
+ 'El modelo cumple con las condiciones relevantes del problema planteado.',
+ 'En el modelo se identifican correctamente los requerimientos principales del inversionista.',
+ 'El modelo integra de forma clara y coherente los tres elementos asignados en las tarjetas.',
+ 'Las indicaciones del inversionista están correctamente integradas y respetadas en el modelo',
+ 'El modelo refleja adecuadamente las modificaciones solicitadas cuando se activan los cambios en las condiciones iniciales.',
+ 'El modelo representa con exactitud los elementos y relaciones del sistema.',
+ 'El modelo mantiene una estructura lógica y consistente en todas sus partes.',
+ 'El modelo es claro y fácilmente entendible para otros miembros del equipo',
+ 'Se aplican convenciones reconocidas que facilitan la verificación y validación del modelo,'
+];
+const TAB_NAMES=['activity','arena','guide','evaluation'];
+const timerViews=new Map(),groupDisplays=new Map();
+let activeTab='activity',completedSignature='',evaluationSignature='',timerRunning=false;
+function groupKey(row){return row.assignmentId||JSON.stringify([row.name,row.CT,row.P,row.IN]);}
+function timingValid(t){return !!t&&[t.startedAt,t.changeAt,t.endsAt,t.totalMinutes,t.changeMinutes].every(Number.isFinite)&&t.startedAt>0&&t.changeMinutes>0&&t.totalMinutes>t.changeMinutes&&t.changeAt>t.startedAt&&t.endsAt>t.changeAt;}
+function readTiming(totalValue,changeValue,now=Date.now()){
+ const total=Number(String(totalValue).replace(',','.')),change=Number(String(changeValue).replace(',','.'));
+ if(!Number.isFinite(total)||total<=0||total>1440)throw Error('El tiempo total debe ser mayor que 0 y de hasta 1440 minutos.');
+ if(!Number.isFinite(change)||change<=0||change>=total)throw Error('El cambio debe ocurrir después del inicio y antes de que termine el tiempo total.');
+ if(total*60000<1000||change*60000<1000)throw Error('Cada tiempo debe ser de al menos un segundo.');
+ return {startedAt:now,changeAt:now+Math.round(change*60000),endsAt:now+Math.round(total*60000),totalMinutes:total,changeMinutes:change};
+}
+function formatTime(ms){const seconds=Math.max(0,Math.ceil(ms/1000));return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}
+function setSessionNotice(text){$('session-notice').textContent=text;}
+function selectTab(name,focus=false){
+ if(!TAB_NAMES.includes(name))return;
+ activeTab=name;
+ for(const tab of TAB_NAMES){const selected=tab===name;$('tab-'+tab).setAttribute('aria-selected',String(selected));$('tab-'+tab).tabIndex=selected?0:-1;$('panel-'+tab).hidden=!selected;}
+ if(name==='evaluation')renderEvaluation();
+ if(focus)$('tab-'+name).focus();
+}
+for(const [index,name] of TAB_NAMES.entries()){
+ $('tab-'+name).addEventListener('click',()=>selectTab(name));
+ $('tab-'+name).addEventListener('keydown',event=>{
+ let next;if(event.key==='ArrowRight')next=(index+1)%TAB_NAMES.length;else if(event.key==='ArrowLeft')next=(index+TAB_NAMES.length-1)%TAB_NAMES.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=TAB_NAMES.length-1;else return;
+ event.preventDefault();selectTab(TAB_NAMES[next],true);
+ });
+}
+function attachTeamTimer(header,row){
+ if(!timingValid(row.timing)){
+ const form=extensionElement('form','legacy-timing');form.noValidate=true;
+ form.append(extensionElement('p','','Este grupo no tiene tiempos programados. Inícielos sin volver a sortear.'));
+ const totalLabel=extensionElement('label','','Tiempo total (min)');const total=document.createElement('input');total.type='number';total.min='0';total.max='1440';total.step='any';total.value='30';totalLabel.append(total);
+ const changeLabel=extensionElement('label','','Cambio a los (min)');const change=document.createElement('input');change.type='number';change.min='0';change.step='any';change.value='15';changeLabel.append(change);
+ const start=extensionElement('button','','Iniciar tiempos');start.type='submit';
+ const feedback=extensionElement('p','extension-feedback');feedback.setAttribute('role','status');
+ form.append(totalLabel,changeLabel,start,feedback);
+ form.addEventListener('submit',event=>{
+ event.preventDefault();let timing;try{timing=readTiming(total.value,change.value);}catch(error){feedback.textContent=error.message;return;}
+ load();if(blocked)return;const current=assignments.find(a=>sameAssignment(a,row));
+ if(!current){feedback.textContent='Este grupo ya no está en la ronda.';return;}
+ if(timingValid(current.timing)){feedback.textContent='Los tiempos de este grupo ya están en marcha. Recarga para verlos.';return;}
+ const updated={...current,timing,assignmentId:current.assignmentId||crypto.randomUUID()};
+ const next=assignments.map(a=>a===current?updated:a);
+ if(!persist(next)){feedback.textContent='No se pudo guardar el inicio. Vuelve a intentarlo.';return;}
+ assignments=next;render();setSessionNotice('Tiempos iniciados para '+current.name+'.');
+ });header.append(form);return;
+ }
+ const box=extensionElement('div','team-timer');box.setAttribute('role','group');box.setAttribute('aria-label','Tiempo de '+row.name);
+ const value=extensionElement('span','timer-value');value.setAttribute('role','timer');value.setAttribute('aria-live','off');
+ const info=extensionElement('span','timer-info');box.append(value,info);header.append(box);timerViews.set(groupKey(row),{box,value,info});
+ updateTimerView(row,Date.now());
+}
+function updateTimerView(row,now){
+ const view=timerViews.get(groupKey(row));if(!view||!timingValid(row.timing))return;
+ const finished=now>=row.timing.endsAt;
+ view.box.classList.toggle('timer-ended',finished);
+ view.value.textContent=finished?'Tiempo finalizado':formatTime(row.timing.endsAt-now)+' restantes';
+ view.info.textContent=row.investorChange?'Cambio del inversionista recibido':now>=row.timing.changeAt?'Procesando cambio del inversionista…':'Cambio en '+formatTime(row.timing.changeAt-now);
+}
+function allTimesEnded(now=Date.now()){
+ return !blocked&&assignments.length>0&&assignments.every(row=>timingValid(row.timing)&&row.timeExpired===true&&now>=row.timing.endsAt&&!!row.investorChange);
+}
+function synchronizeTeacherViews(){
+ evaluationSignature='';
+ if(!assignments.length){completedSignature='';setSessionNotice('');}
+ renderEvaluation();
+ if(!allTimesEnded())completedSignature='';
+}
+function processTimers(now=Date.now()){
+ if(timerRunning||blocked||!assignments.length)return;
+ timerRunning=true;
+ try{
+ const due=row=>timingValid(row.timing)&&((!row.investorChange&&now>=row.timing.changeAt)||(!row.timeExpired&&now>=row.timing.endsAt));
+ if(assignments.some(due)){
+ // Re-read before saving: preserve uploads, deliveries and checklist edits from another tab.
+ load();if(blocked)return;
+ const changed=[],announcements=[],newChanges=new Set();
+ const next=assignments.map(row=>{
+ if(!due(row))return row;const updated={...row};
+ if(!row.investorChange&&now>=row.timing.changeAt){updated.investorChange={...INVESTOR_CHANGES[row.IN]};updated.changeToken=crypto.randomUUID();newChanges.add(groupKey(row));announcements.push('Cambio del inversionista recibido por '+row.name+'.');}
+ if(!row.timeExpired&&now>=row.timing.endsAt){updated.timeExpired=true;announcements.push('Tiempo finalizado para '+row.name+'.');}
+ changed.push(updated);return updated;
+ });
+ if(changed.length){
+ if(!persist(next)){setSessionNotice('No se pudieron guardar los eventos de tiempo. Libera almacenamiento o habilita el guardado; se volverá a intentar.');return;}
+ assignments=next;
+ for(const row of changed){
+ const key=groupKey(row),display=groupDisplays.get(key);
+ if(newChanges.has(key)){
+ const notificationKey=JSON.stringify([row.name,row.CT,row.P,row.IN]);pendingChanges.add(notificationKey);
+ setTimeout(()=>{pendingChanges.delete(notificationKey);const current=assignments.find(a=>sameAssignment(a,row)),update=groupDisplays.get(key);if(current&&update)update(current);},950);
+ }
+ if(display)display(row);
+ }
+ evaluationSignature='';setSessionNotice(announcements.join(' '));
+ }
+ }
+ for(const row of assignments)updateTimerView(row,now);
+ if(allTimesEnded(now)){
+ const signature=assignments.map(row=>groupKey(row)+':'+row.timing.endsAt).join('|');
+ if(completedSignature!==signature){completedSignature=signature;selectTab('evaluation',true);setSessionNotice('Todos los tiempos finalizaron. La evaluación de los equipos está disponible.');}
+ }else{completedSignature='';if(activeTab==='evaluation')renderEvaluation();}
+ }finally{timerRunning=false;}
+}
+function checklistValues(row){
+ return CHECKLIST.map((_,i)=>{
+ const value=Array.isArray(row.evaluation)?row.evaluation[i]:null;
+ if(value===true)return true;
+ // Earlier checkboxes did not distinguish an unchecked criterion from a pending review.
+ return row.evaluationFormat==='yes-no-v1'&&value===false?false:null;
+ });
+}
+function evaluationPercent(row){return checklistValues(row).filter(value=>value===true).length*10;}
+function pendingEvaluationItems(){return assignments.reduce((total,row)=>total+checklistValues(row).filter(value=>value===null).length,0);}
+function updateEvaluationDownload(){
+ const pending=pendingEvaluationItems(),ready=allTimesEnded();
+ const complete=ready&&pending===0;
+ $('download-evaluation').disabled=!complete;
+ synchronizePodium(complete);
+ $('evaluation-export-help').textContent=!ready?'La descarga y el Podium estarán disponibles al finalizar todos los tiempos y completar la evaluación.':pending?'Faltan '+pending+' criterios por evaluar. Responda «Sí» o «No» en todos los criterios de todos los equipos para habilitar la descarga y el Podium.':'Evaluación completa. Descargue el resumen CSV o abra el Podium para conocer los tres primeros lugares.';
+ return complete;
+}
+function evaluationCSV(rows){
+ const cell=value=>{let text=String(value);if(/^[\s\uFEFF]*[=+\-@]/.test(text))text="'"+text;return '"'+text.replace(/"/g,'""')+'"';};
+ return '\uFEFF'+[['Equipo','Porcentaje logrado'],...rows.map(row=>[row.name,evaluationPercent(row)+'%'])].map(row=>row.map(cell).join(';')).join('\r\n')+'\r\n';
+}
+$('download-evaluation').addEventListener('click',()=>{
+ const status=$('evaluation-export-status');load();
+ const complete=updateEvaluationDownload();
+ if(blocked||!allTimesEnded()){status.textContent='El resumen estará disponible cuando finalicen todos los tiempos de la ronda.';return;}
+ if(!complete){status.textContent='No se descargó el resumen: faltan '+pendingEvaluationItems()+' criterios por evaluar.';return;}
+ try{
+ const file=new Blob([evaluationCSV(assignments)],{type:'text/csv;charset=utf-8;'});
+ const url=URL.createObjectURL(file),link=document.createElement('a');
+ link.href=url;link.download='Startup-Arena-evaluacion.csv';link.hidden=true;
+ try{document.body.append(link);link.click();}finally{link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ status.textContent='Resumen descargado: '+assignments.length+' equipo(s). Solo las respuestas «Sí» suman al porcentaje.';
+ }catch{status.textContent='No se pudo descargar el resumen. Inténtalo de nuevo.';}
+});
+function renderEvaluation(){
+ const ready=allTimesEnded();const waiting=$('evaluation-wait');waiting.hidden=ready;
+ $('evaluation-export').hidden=!ready;
+ updateEvaluationDownload();
+ if(!ready){
+ $('evaluation-export-status').textContent='';
+ $('evaluation-results').replaceChildren();evaluationSignature='';
+ const missing=assignments.filter(row=>!timingValid(row.timing)).length;
+ waiting.textContent=blocked?'No se pudo leer la ronda guardada.':!assignments.length?'La evaluación estará disponible cuando registre equipos y finalicen sus tiempos.':missing?'Hay '+missing+' grupo(s) sin tiempos. Use «Iniciar tiempos» en «Sorteo y equipos».':'La evaluación se abrirá automáticamente cuando finalicen los tiempos de todos los equipos.';
+ return;
+ }
+ const signature=JSON.stringify(assignments.map(row=>[groupKey(row),row.evaluation,row.evaluationFormat,row.changeToken,row.solutionImage,row.solutionDelivered]));
+ if(signature===evaluationSignature)return;evaluationSignature=signature;
+ $('evaluation-results').replaceChildren();
+ for(const row of assignments){
+ const article=extensionElement('article','evaluation-group');article.append(extensionElement('h2','',row.name));
+ const cards=extensionElement('div','evaluation-cards');
+ for(const [key,label] of [['CT','Contexto'],['P','Problema'],['IN','Inversionista']]){
+ const card=CARDS[key].find(c=>c.id===row[key]),fig=document.createElement('figure');
+ fig.append(extensionElement('figcaption','',label));const img=document.createElement('img');img.src=card.image;img.alt=label+': '+card.name;img.loading='lazy';fig.append(img);appendCardReading(fig,img,card,label);fig.append(extensionElement('p','card-name',card.name));cards.append(fig);
+ }article.append(cards);
+ const details=extensionElement('details','evaluation-evidence');details.append(extensionElement('summary','','Ver solución y cambio recibido'));
+ if(row.investorChange){details.append(extensionElement('h3','',row.investorChange.title),extensionElement('p','',row.investorChange.condition),extensionElement('p','',row.investorChange.question));}
+ details.append(extensionElement('p','',row.solutionDelivered?'Solución marcada como entregada.':'Solución aún no marcada como entregada.'));
+ if(row.solutionImage){const image=extensionElement('img','solution-image');image.src=row.solutionImage;image.alt='Modelo del equipo '+row.name;details.append(image);}else details.append(extensionElement('p','','Este equipo no ha adjuntado una imagen.'));
+ article.append(details);
+ const meter=extensionElement('div','evaluation-meter'),summary=extensionElement('strong',''),bar=document.createElement('progress');bar.max=10;bar.setAttribute('aria-label','Criterios cumplidos por '+row.name);meter.append(summary,bar);article.append(meter);
+ const checklist=extensionElement('fieldset','evaluation-checklist');checklist.append(extensionElement('legend','','Lista de chequeo · '+row.name));
+ const feedback=extensionElement('p','evaluation-status');feedback.setAttribute('role','status');
+ let values=checklistValues(row);
+ const updateMeter=()=>{const count=values.filter(value=>value===true).length,pending=values.filter(value=>value===null).length;bar.value=count;summary.textContent=count+' de 10 criterios cumplidos · '+count*10+' %'+(pending?' · '+pending+' sin responder':'');};updateMeter();
+ const controls=[];
+ const syncControls=()=>controls.forEach(({input,index,value})=>{input.checked=values[index]===value;});
+ CHECKLIST.forEach((criterion,index)=>{
+ const choice=extensionElement('fieldset','checklist-choice');choice.append(extensionElement('legend','',(index+1)+'. '+criterion));
+ const options=extensionElement('div','checklist-options');
+ for(const [value,text] of [[true,'Sí'],[false,'No']]){
+ const label=extensionElement('label','checklist-option'),input=document.createElement('input');input.type='radio';input.name='evaluation-'+assignments.indexOf(row)+'-'+index;input.value=value?'yes':'no';input.checked=values[index]===value;
+ controls.push({input,index,value});label.append(input,extensionElement('span','',text));options.append(label);
+ input.addEventListener('change',()=>{
+ if(!input.checked)return;
+ load();updateEvaluationDownload();if(blocked){syncControls();feedback.textContent='No se pudo leer la ronda. Recarga antes de continuar.';return;}
+ const current=assignments.find(a=>sameAssignment(a,row));
+ if(!current||!allTimesEnded()){syncControls();feedback.textContent='La ronda cambió. Vuelve a abrir Evaluación.';return;}
+ const nextValues=checklistValues(current);nextValues[index]=value;
+ const saved=saveExtension(current,{evaluation:nextValues,evaluationFormat:'yes-no-v1'},feedback);
+ if(!saved){syncControls();return;}
+ values=nextValues;syncControls();updateMeter();updateEvaluationDownload();feedback.textContent='Evaluación guardada. '+summary.textContent;
+ $('evaluation-export-status').textContent='';
+ });
+ }
+ choice.append(options);checklist.append(choice);
+ });article.append(checklist,feedback);$('evaluation-results').append(article);
+ }
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)processTimers();});
+window.addEventListener('focus',()=>processTimers());
+
+let podiumGroups=[],podiumIndex=0;
+function podiumRanking(rows){
+ // Dense ranks: equal scores share a place, then the next distinct score follows.
+ const scores=[...new Set(rows.map(evaluationPercent))].sort((a,b)=>b-a).slice(0,3);
+ return scores.map((score,index)=>({rank:index+1,score,teams:rows.filter(row=>evaluationPercent(row)===score).map(row=>row.name)}));
+}
+function showPodiumPlace(index){
+ if(!podiumGroups.length)return;
+ podiumIndex=(index+podiumGroups.length)%podiumGroups.length;
+ for(let rank=1;rank<=3;rank++){
+ const group=podiumGroups[rank-1],visible=rank-1===podiumIndex;
+ $('podium-slide-'+rank).hidden=!group||!visible;
+ $('podium-go-'+rank).hidden=!group;
+ $('podium-go-'+rank).setAttribute('aria-pressed',String(!!group&&visible));
+ const list=$('podium-teams-'+rank);list.replaceChildren();
+ $('podium-score-'+rank).textContent=group?group.score+' % logrado':'';
+ $('podium-tie-'+rank).hidden=!group||group.teams.length<2;
+ if(group)for(const name of group.teams)list.append(extensionElement('li','',name));
+ }
+ $('podium-prev').disabled=podiumGroups.length<2;$('podium-next').disabled=podiumGroups.length<2;
+ const current=podiumGroups[podiumIndex];
+ $('podium-announcement').textContent='Puesto '+current.rank+' de '+podiumGroups.length+' · '+current.score+' % · '+current.teams.join(', ')+(current.teams.length>1?' · Lugar compartido.':'.');
+}
+function synchronizePodium(complete){
+ $('show-podium').disabled=!complete;
+ if(!$('podium-dialog').open)return;
+ if(!complete){$('podium-dialog').close();podiumGroups=[];return;}
+ podiumGroups=podiumRanking(assignments);
+ showPodiumPlace(Math.min(podiumIndex,podiumGroups.length-1));
+}
+$('show-podium').addEventListener('click',()=>{
+ load();if(!updateEvaluationDownload()){
+ $('evaluation-export-status').textContent='Complete todos los criterios de todos los equipos para mostrar el Podium.';return;
+ }
+ podiumGroups=podiumRanking(assignments);showPodiumPlace(0);
+ if(!$('podium-dialog').open)$('podium-dialog').showModal();
+});
+$('close-podium').addEventListener('click',()=>$('podium-dialog').close());
+$('podium-dialog').addEventListener('close',()=>{if(!$('show-podium').disabled)$('show-podium').focus();});
+$('podium-prev').addEventListener('click',()=>showPodiumPlace(podiumIndex-1));
+$('podium-next').addEventListener('click',()=>showPodiumPlace(podiumIndex+1));
+for(let rank=1;rank<=3;rank++)$('podium-go-'+rank).addEventListener('click',()=>{if(rank<=podiumGroups.length)showPodiumPlace(rank-1);});
+$('podium-dialog').addEventListener('keydown',event=>{
+ let index;
+ if(event.key==='ArrowRight')index=podiumIndex+1;else if(event.key==='ArrowLeft')index=podiumIndex-1;else if(event.key==='Home')index=0;else if(event.key==='End')index=podiumGroups.length-1;else return;
+ event.preventDefault();showPodiumPlace(index);
+});
+
+load();selectTab(assignments.length?'arena':'activity');render();processTimers();
+setInterval(()=>processTimers(),1000);
+</script></body></html>
